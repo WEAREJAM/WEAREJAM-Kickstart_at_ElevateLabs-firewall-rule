@@ -1,4 +1,4 @@
-FIREWALL 
+# FIREWALL 
 What is a firewall? A firewall is an agent responsible for allowing or denying traffic based on rules. Coming to every system/agent, it can't decide the right/wrong traffic. 
 Note: Here, the traffic refers to the request we are sending to the servers. 
 The firewall always follows the rules and decides which traffic is to be allowed and denied. We can also add rules manually so it works the way we want. 
@@ -9,6 +9,7 @@ Note: Every web traffic is classified into two types, which are inbound and outb
 
 lets start ufw with  
 >sudo ufw enable
+
 this command activate firewall and enable system startup
 
 To check if the ufw status we can use 
@@ -27,15 +28,24 @@ sam2
 Here in the above image, we see only the status, which indicates active, and no rules.As i dont want port 23 connection let me add deny the port traffic with the rule.
 
 >sudo ufw deny 23/tcp
+
 >sudo ufw status numbered //To check the rules we added
 
 sam3
 
 Now we successfully added the rule, let's test it
 
-# Case 1: NMAP
+__Case 1: NMAP__
+>nmap -p 23 192.168.xxx.xxx
+sam4
+
+__Case 1: Netcat__
+>nc 192.168.xxx.xxx 23
+sam5
+
+In both cases, we see the telnet (23 port) is refusing connection.i.e when the request is made, it is sent through the firewall as we set the rule it acts accordingly by refusing such connections.
+
+This is the basic solution. This solution closes the port for the attackers and __for me__. so that i can't use remote connection now SO IS THIS THE SOLUTION?? __NO__ 
+Closing the port is not the solution in this case, we can limit the access by specifing ip address, in some cases subnets can also be trusted with this scenario 
 
 
-
-This is the basic solution. This solution closes the port for the attackers and for me. so that i can't use remote connection now SO IS THIS THE SOLUTION?? #NO 
-Closing the port is not the solution in this case, we can limit the access with specifing ip address, incase of us so sure  
