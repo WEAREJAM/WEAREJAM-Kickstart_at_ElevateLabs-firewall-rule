@@ -48,4 +48,18 @@ In both cases, we see the telnet (23 port) is refusing connection.i.e when the r
 This is the basic solution. This solution closes the port for the attackers and __for me__. so that i can't use remote connection now SO IS THIS THE SOLUTION?? __NO__ 
 Closing the port is not the solution in this case, we can limit the access by specifing ip address, in some cases subnets can also be trusted with this scenario 
 
+>sudo ufw allow from 192.168.xxx.xxx to amy port 23 proto tcp
 
+sam6
+
+the above command just allows only 1 ip which is mine to connect to that port not the other way around.this is also an example to imbound traffic.
+
+Now we successfully added the rule, let's test it
+
+__Case 1: NMAP__
+>nmap -p 23 192.168.xxx.xxx
+sam4
+
+__Case 1: Netcat__
+>nc 192.168.xxx.xxx 23
+sam5
