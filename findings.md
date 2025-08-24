@@ -17,50 +17,52 @@ To check if the ufw status we can use
 
 ![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam1.png?raw=true)
 
-Now with this we can confirm the system is active and ready to procees.
+Now with this we can confirm the system is active and ready to proceed.
 In order to see the added rule list
 >sudo ufw status numbered
 
-Note: No rules will be added as this kali linux machine is set to default and none restrictions are added to the list.
+Note: No rules will be added as this Kali Linux machine is set to default and none restrictions are added to the list.
 
 ![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam2.png?raw=true)
 
-Here in the above image, we see only the status, which indicates active, and no rules.As i dont want port 23 connection let me add deny the port traffic with the rule.
+Here in the above image, we see only the status, which indicates active, and no rules.
 
->sudo ufw deny 23/tcp
+Let's add a rule to firewalls and see how we can allow or deny the traffic. 
+Before adding the rules, all we have to know is whether we can allow or deny the traffic.
 
->sudo ufw status numbered //To check the rules we added
+Port 443 
+We all know how this port works, we make the request it reaches the server, and gets to the application, so is this it? No, the sent request is passed through inbound and outbound rules. And what are these types of rules?
 
-![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam3.png?raw=true)
+I can set the rules to control the incoming and outgoing traffic. The outer traffic coming to our network is called inbound traffic, and the traffic going out from our system is called outbound traffic.
 
-Now we successfully added the rule, let's test it
+sam3 
 
-__Case 1: NMAP__
->nmap -p 23 192.168.xxx.xxx
+The above image is a well-opened application, the UFW by default have any specific rules.
+Let's add the rule to deny 443 port and see how the webpage behaves 
 
-![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam4.png?raw=true)
+>sudo ufw deny out 443/tcp //This "deny out" says to stop the traffic going from our network, if i want to stop traffic coming then deny <port no>
 
-__Case 1: Netcat__
->nc 192.168.xxx.xxx 23
+sam4
 
-![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam5.png?raw=true)
+As the rule is added, let's check 
 
-In both cases, we see the telnet (23 port) is refusing connection.i.e when the request is made, it is sent through the firewall as we set the rule it acts accordingly by refusing such connections.
+sam3 
 
-This is the basic solution. This solution closes the port for the attackers and __for me__. so that i can't use remote connection now SO IS THIS THE SOLUTION?? __NO__ 
-Closing the port is not the solution in this case, we can limit the access by specifing ip address, in some cases subnets can also be trusted with this scenario 
+As we see that the website is loaded, BUT WHY? 
+Here i used Firefox application,the requests are dealt with 53 DNS port here. With this observation lets try to deny the DNS port traffic and see
 
->sudo ufw allow from 192.168.xxx.xxx to amy port 23 proto tcp
+sam6
 
-![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam6.png?raw=true)
+Heres what i observes after rule is added
 
-the above command just allows only 1 ip which is mine to connect to that port not the other way around.this is also an example to imbound traffic.
+sam7
 
-Now we successfully added the rule, let's test it
+The search engine does its work perfectly with browsing the content 
 
-__Case 1: NMAP__
->nmap -p 23 192.168.xxx.xxx
+sam8 
 
-__Case 1: Netcat__
->nc 192.168.xxx.xxx 23
+sam9
 
+Application is not loaded here, when it reaches the limit it pops limit message.
+
+This is just an example of how the traffic is and can be controlled with a firewall. 
