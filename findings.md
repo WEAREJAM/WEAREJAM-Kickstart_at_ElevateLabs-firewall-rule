@@ -23,7 +23,7 @@ In order to see the added rule list
 
 Note: No rules will be added as this kali linux machine is set to default and none restrictions are added to the list.
 
-![Firewall example](https://github.com/WEAREJAM/Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam2.png?raw=true)
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam2.png?raw=true)
 
 Here in the above image, we see only the status, which indicates active, and no rules.As i dont want port 23 connection let me add deny the port traffic with the rule.
 
@@ -31,19 +31,19 @@ Here in the above image, we see only the status, which indicates active, and no 
 
 >sudo ufw status numbered //To check the rules we added
 
-![Firewall example](https://github.com/WEAREJAM/Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam3.png?raw=true)
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam3.png?raw=true)
 
 Now we successfully added the rule, let's test it
 
 __Case 1: NMAP__
 >nmap -p 23 192.168.xxx.xxx
 
-![Firewall example](https://github.com/WEAREJAM/Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam4.png?raw=true)
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam4.png?raw=true)
 
 __Case 1: Netcat__
 >nc 192.168.xxx.xxx 23
 
-![Firewall example](https://github.com/WEAREJAM/Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam5.png?raw=true)
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam5.png?raw=true)
 
 In both cases, we see the telnet (23 port) is refusing connection.i.e when the request is made, it is sent through the firewall as we set the rule it acts accordingly by refusing such connections.
 
@@ -52,7 +52,7 @@ Closing the port is not the solution in this case, we can limit the access by sp
 
 >sudo ufw allow from 192.168.xxx.xxx to amy port 23 proto tcp
 
-![Firewall example](https://github.com/WEAREJAM/Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam6.png?raw=true)
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam6.png?raw=true)
 
 the above command just allows only 1 ip which is mine to connect to that port not the other way around.this is also an example to imbound traffic.
 
