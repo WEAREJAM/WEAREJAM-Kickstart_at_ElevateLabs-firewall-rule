@@ -15,7 +15,7 @@ this command activate firewall and enable system startup
 To check if the ufw status we can use 
 >sudo systemctl status ufw
 
-![Firewall example](https://github.com/WEAREJAM/Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam1.png?raw=true)
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam1.png?raw=true)
 
 Now with this we can confirm the system is active and ready to procees.
 In order to see the added rule list
