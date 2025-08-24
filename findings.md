@@ -35,34 +35,36 @@ We all know how this port works, we make the request it reaches the server, and 
 
 I can set the rules to control the incoming and outgoing traffic. The outer traffic coming to our network is called inbound traffic, and the traffic going out from our system is called outbound traffic.
 
-sam3 
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam3.png?raw=true)
 
 The above image is a well-opened application, the UFW by default have any specific rules.
 Let's add the rule to deny 443 port and see how the webpage behaves 
 
 >sudo ufw deny out 443/tcp //This "deny out" says to stop the traffic going from our network, if i want to stop traffic coming then deny <port no>
 
-sam4
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam4.png?raw=true)
 
 As the rule is added, let's check 
 
-sam3 
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam3.png?raw=true) 
 
 As we see that the website is loaded, BUT WHY? 
 Here i used Firefox application,the requests are dealt with 53 DNS port here. With this observation lets try to deny the DNS port traffic and see
 
-sam6
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam6.png?raw=true)
 
 Heres what i observes after rule is added
 
-sam7
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam7.png?raw=true)
 
 The search engine does its work perfectly with browsing the content 
 
-sam8 
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam8.png?raw=true)
 
-sam9
+![Firewall example](https://github.com/WEAREJAM/WEAREJAM-Kickstart_at_ElevateLabs-firewall-rule/blob/main/assets/sam9.png?raw=true)
 
 Application is not loaded here, when it reaches the limit it pops limit message.
 
 This is just an example of how the traffic is and can be controlled with a firewall. 
+
+___Jamming with JAM___
